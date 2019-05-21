@@ -19,7 +19,89 @@ RSpec.describe Isbn10Verifier do
       it 'does not raise an error' do
         verifier = Isbn10Verifier.new
         string = '1234'
-        expect { verifier.isbn_validator(string) }.not_to raise_error
+        expect { verifier.isbn_validator(string) }.not_to raise_error('Input is not a string, please input a string')
+      end
+    end
+
+    # As a user,
+    # So I know my ISBN code has the correct number of digits
+    # I want to be notified with an error if my ISBN code is under or over 10 digits
+
+    context 'when input is empty' do
+      it 'raises an error' do
+        verifier = Isbn10Verifier.new
+        not_10_digits = ''
+        expect { verifier.isbn_validator(not_10_digits) }.to raise_error('Input is not 10 digits long, invalid ISBN code')
+      end
+    end
+    context 'when input is 1 digit long' do
+      it 'raises an error' do
+        verifier = Isbn10Verifier.new
+        not_10_digits = '1'
+        expect { verifier.isbn_validator(not_10_digits) }.to raise_error('Input is not 10 digits long, invalid ISBN code')
+      end
+    end
+    context 'when input is 2 digits long' do
+      it 'raises an error' do
+        verifier = Isbn10Verifier.new
+        not_10_digits = '12'
+        expect { verifier.isbn_validator(not_10_digits) }.to raise_error('Input is not 10 digits long, invalid ISBN code')
+      end
+    end
+    context 'when input is 3 digits long' do
+      it 'raises an error' do
+        verifier = Isbn10Verifier.new
+        not_10_digits = '123'
+        expect { verifier.isbn_validator(not_10_digits) }.to raise_error('Input is not 10 digits long, invalid ISBN code')
+      end
+    end
+    context 'when input is 4 digits long' do
+      it 'raises an error' do
+        verifier = Isbn10Verifier.new
+        not_10_digits = '1234'
+        expect { verifier.isbn_validator(not_10_digits) }.to raise_error('Input is not 10 digits long, invalid ISBN code')
+      end
+    end
+    context 'when input is 5 digits long' do
+      it 'raises an error' do
+        verifier = Isbn10Verifier.new
+        not_10_digits = '12345'
+        expect { verifier.isbn_validator(not_10_digits) }.to raise_error('Input is not 10 digits long, invalid ISBN code')
+      end
+    end
+    context 'when input is 6 digits long' do
+      it 'raises an error' do
+        verifier = Isbn10Verifier.new
+        not_10_digits = '123456'
+        expect { verifier.isbn_validator(not_10_digits) }.to raise_error('Input is not 10 digits long, invalid ISBN code')
+      end
+    end
+    context 'when input is 7 digits long' do
+      it 'raises an error' do
+        verifier = Isbn10Verifier.new
+        not_10_digits = '1234567'
+        expect { verifier.isbn_validator(not_10_digits) }.to raise_error('Input is not 10 digits long, invalid ISBN code')
+      end
+    end
+    context 'when input is 8 digits long' do
+      it 'raises an error' do
+        verifier = Isbn10Verifier.new
+        not_10_digits = '12345678'
+        expect { verifier.isbn_validator(not_10_digits) }.to raise_error('Input is not 10 digits long, invalid ISBN code')
+      end
+    end
+    context 'when input is 9 digits long' do
+      it 'raises an error' do
+        verifier = Isbn10Verifier.new
+        not_10_digits = '123456789'
+        expect { verifier.isbn_validator(not_10_digits) }.to raise_error('Input is not 10 digits long, invalid ISBN code')
+      end
+    end
+    context 'when input is 11 digits long' do
+      it 'raises an error' do
+        verifier = Isbn10Verifier.new
+        not_10_digits = '12345678911'
+        expect { verifier.isbn_validator(not_10_digits) }.to raise_error('Input is not 10 digits long, invalid ISBN code')
       end
     end
   end
