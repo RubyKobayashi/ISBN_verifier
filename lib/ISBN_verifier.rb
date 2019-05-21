@@ -1,6 +1,8 @@
-class ISBN_verifier
+# frozen_string_literal: true
 
-  def ISBN_validator(string)
-      raise "Input is not a string, please input a string"
-    end
+# :nodoc:
+class Isbn10Verifier
+  def isbn_validator(_string)
+    raise 'Input is not a string, please input a string'
   end
+end
