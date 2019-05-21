@@ -15,5 +15,12 @@ RSpec.describe Isbn10Verifier do
         expect { verifier.isbn_validator(non_string) }.to raise_error('Input is not a string, please input a string')
       end
     end
+    context 'when input is a string' do
+      it 'does not raise an error' do
+        verifier = Isbn10Verifier.new
+        string = '1234'
+        expect { verifier.isbn_validator(string) }.not_to raise_error
+      end
+    end
   end
 end
