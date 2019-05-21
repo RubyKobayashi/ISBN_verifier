@@ -1,0 +1,4 @@
+AllCops:
+
+  Excludes:
+    - spec/spec_helper.rb
