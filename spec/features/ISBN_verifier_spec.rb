@@ -12,7 +12,7 @@ RSpec.describe 'ISBN_10_Verifier' do
       it 'raises an error' do
         verifier = Verifier.new
         non_string = 1234
-        expect { verifier.isbn_validator(non_string) }.to raise_error('Input is not a string, please input a string')
+        expect { verifier.isbn_10(non_string) }.to raise_error('Input is not a string, please input a string')
       end
     end
 
@@ -24,7 +24,7 @@ RSpec.describe 'ISBN_10_Verifier' do
       it 'raises an error' do
         verifier = Verifier.new
         not_10_digits = '123456789'
-        expect { verifier.isbn_validator(not_10_digits) }.to raise_error('Input is not 10 digits long, invalid ISBN code')
+        expect { verifier.isbn_10(not_10_digits) }.to raise_error('Input is not 10 digits long, invalid ISBN code')
       end
     end
   end

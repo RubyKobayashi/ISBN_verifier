@@ -2,7 +2,7 @@
 
 # :nodoc:
 class Verifier
-  def isbn_validator(string)
+  def isbn_10(string)
     check_input_is_string(string)
     check_input_is_10_digits_long(string)
   end
