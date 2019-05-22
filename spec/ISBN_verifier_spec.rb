@@ -7,7 +7,7 @@ require 'verifier'
 # I want to be notified with an error if my ISBN code is not a string
 
 RSpec.describe Verifier do
-  describe '#ISBN_validator' do
+  describe '.isbn_10' do
     context 'when input is not a string' do
       it 'raises an error' do
         non_string = 1234

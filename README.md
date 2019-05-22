@@ -32,6 +32,14 @@ So I know my ISBN code has the correct number of digits
 I want to be notified with an error if the code is under or over 10 digits
 ```
 
+* Users with correct validation codes will be notified that they have a valid ISBN code
+
+```
+As a user,
+So I know when I have a valid ISBN code
+I want the program to confirm that I have a valid ISBN code
+```
+
 * Users can input codes ending with an 'X' and still have their code evaluated
 
 ```
@@ -56,13 +64,7 @@ So I can have ISBN code with hyphens verified correctly
 I want the program to be able to read codes with hyphens
 ```
 
-* Users with correct validation codes will be notified that they have a valid ISBN code
 
-```
-As a user,
-So I know when I have a valid ISBN code
-I want the program to confirm that I have a valid ISBN code
-```
 
 
 

@@ -2,11 +2,16 @@
 
 # :nodoc:
 class Verifier
-
   attr_reader :string
 
   def self.isbn_10(string)
     @string = string
+    check_input
+  end
+
+  private_class_method
+
+  def self.check_input
     check_input_is_string
     check_input_is_10_digits_long
   end
