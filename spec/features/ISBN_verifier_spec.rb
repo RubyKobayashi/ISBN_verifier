@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'isbn_verifier'
+require 'verifier'
 
 # As a user,
 # So I know my ISBN code is in the right format
@@ -10,7 +10,7 @@ RSpec.describe 'ISBN_10_Verifier' do
   describe '#ISBN_validator' do
     context 'when input is not a string' do
       it 'raises an error' do
-        verifier = Isbn10Verifier.new
+        verifier = Verifier.new
         non_string = 1234
         expect { verifier.isbn_validator(non_string) }.to raise_error('Input is not a string, please input a string')
       end
@@ -22,7 +22,7 @@ RSpec.describe 'ISBN_10_Verifier' do
 
     context 'when input is not 10 digits long' do
       it 'raises an error' do
-        verifier = Isbn10Verifier.new
+        verifier = Verifier.new
         not_10_digits = '123456789'
         expect { verifier.isbn_validator(not_10_digits) }.to raise_error('Input is not 10 digits long, invalid ISBN code')
       end

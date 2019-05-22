@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # :nodoc:
-class Isbn10Verifier
+class Verifier
   def isbn_validator(string)
     check_input_is_string(string)
     check_input_is_10_digits_long(string)
