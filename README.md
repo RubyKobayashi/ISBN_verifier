@@ -17,7 +17,7 @@ In terminal run command:
 
 **User Stories:**
 
-* Users can input strings only
+* Users are notified with an error if their input is not a string
 
 ```
 As a user,
@@ -29,7 +29,7 @@ I want to be notified with an error if my ISBN code is not a string
 ```
 As a user,
 So I know my ISBN code has the correct number of digits
-I want to be notified with an error if my ISBN code is under or over 10 digits
+I want to be notified with an error if the code is under or over 10 digits
 ```
 
 * Users can input codes ending with an 'X' and still have their code evaluated
@@ -54,6 +54,14 @@ I want the program to be able to read codes without hyphens
 As a user,
 So I can have ISBN code with hyphens verified correctly
 I want the program to be able to read codes with hyphens
+```
+
+* Users with correct validation codes will be notified that they have a valid ISBN code
+
+```
+As a user,
+So I know when I have a valid ISBN code
+I want the program to confirm that I have a valid ISBN code
 ```
 
 
