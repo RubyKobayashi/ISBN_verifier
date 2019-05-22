@@ -32,11 +32,19 @@ So I know my ISBN code has the correct number of digits
 I want to be notified with an error if the code is under or over 10 digits
 ```
 
-* Users with correct validation codes will be notified that they have a valid ISBN code
+* Users with a valid ISBN codes will be notified that they have a valid ISBN code
 
 ```
 As a user,
 So I know when I have a valid ISBN code
+I want the program to confirm that I have a valid ISBN code
+```
+
+* Users with an invalid validation codes will be notified that they have an invalid ISBN code
+
+```
+As a user,
+So I know when I have an invalid valid ISBN code
 I want the program to confirm that I have a valid ISBN code
 ```
 
