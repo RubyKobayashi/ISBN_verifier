@@ -40,12 +40,20 @@ So I know when I have a valid ISBN code
 I want the program to confirm that I have a valid ISBN code
 ```
 
-* Users with an invalid validation codes will be notified that they have an invalid ISBN code
+* Users with an invalid validation code will be notified that they have an invalid ISBN code
 
 ```
 As a user,
 So I know when I have an invalid valid ISBN code
 I want the program to confirm that I have a valid ISBN code
+```
+
+* Users can input ISBN codes for validation without hyphens
+
+```
+As a user,
+So I can have ISBN code without hyphens verified correctly
+I want the program to be able to read codes without hyphens
 ```
 
 * Users can input codes ending with an 'X' and still have their code evaluated
@@ -56,13 +64,6 @@ So I can have ISBN codes ending with an 'X' verified correctly
 I want the 'X' to equal 10
 ```
 
-* Users can input ISBN codes for validation without hyphens
-
-```
-As a user,
-So I can have ISBN code without hyphens verified correctly
-I want the program to be able to read codes without hyphens
-```
 
 * Users can input ISBN codes for validation with hyphens
 
