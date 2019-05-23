@@ -6,9 +6,12 @@ class Verifier
   attr_reader :converter
   attr_accessor :sum
 
+  CORRECT_INPUT_LENGTH = 10
+
   def initialize(converter)
     @converter = converter
     @sum = []
+    @correct_input_length = CORRECT_INPUT_LENGTH
   end
 
   def isbn_10(string)
@@ -29,7 +32,7 @@ class Verifier
   end
 
   def check_input_is_10_digits_long(string)
-    raise 'Input is not 10 digits long, invalid ISBN code' unless string.length == 10
+    raise 'Input is not 10 digits long, invalid ISBN code' unless string.length == @correct_input_length
   end
 
   def isbn_10_algorithm
