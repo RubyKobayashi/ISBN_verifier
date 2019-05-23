@@ -44,8 +44,8 @@ I want the program to confirm that I have a valid ISBN code
 
 ```
 As a user,
-So I know when I have an invalid valid ISBN code
-I want the program to confirm that I have a valid ISBN code
+So I know when I have an invalid ISBN code
+I want the program to confirm that I have a invalid ISBN code
 ```
 
 * Users can input ISBN codes for validation without hyphens
