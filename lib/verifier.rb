@@ -4,6 +4,7 @@ require_relative 'formatter'
 # :nodoc:
 class Verifier
   attr_reader :formatter
+
   def initialize(formatter)
     @formatter = formatter
   end
@@ -14,8 +15,11 @@ class Verifier
     @formatter.delete_hyphens(string)
     formatted_code = @formatter.isbn
     check_input_is_10_digits_long(formatted_code)
-
     isbn_10_algorithm(formatted_code, sum)
+    if last_digit_X(formatted_code)
+      @formatter.delete_x
+      sum.push(Formatter::X)
+    end
     status_confirmation(sum)
   end
 
@@ -29,15 +33,23 @@ class Verifier
     end
   end
 
-  def isbn_10_algorithm(formatted_code, sum)
-    array = formatted_code.split('')
+  def isbn_10_algorithm(_formatted_code, sum)
+    array = @formatter.isbn.split('')
     array.each_with_index do |element, index|
-      multiple = 10 - index
+      multiple = array.length - index
       sum.push(element.to_i * multiple)
     end
   end
 
+  def last_digit_X(formatted_code)
+    formatted_code[9] == 'X'
+  end
+
   def valid_isbn?(sum)
+    # if @formatter.isbn[9] == '10'
+    #   sum.push[10]
+    #   p sum
+    # end
     (sum.inject(0) { |sum, x| sum + x } % 11).zero?
   end
 

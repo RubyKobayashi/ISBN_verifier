@@ -4,9 +4,13 @@
 class Formatter
   attr_reader :isbn
 
-  def intialize; end
+  X = 10
 
   def delete_hyphens(string)
     @isbn = string.tr('-', '')
+  end
+
+  def delete_x
+    @isbn.chop!
   end
 end

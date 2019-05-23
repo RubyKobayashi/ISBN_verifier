@@ -149,10 +149,25 @@ RSpec.describe Verifier do
 
     context 'when user has an invalid ISBN code with hyphens' do
       it 'notifies the user they have an valid ISBN code' do
-        string = '3-598-21508-8'
+        string = '3-598-21508-6'
         isbn = '3598215086'
         allow(formatter).to receive(:isbn).and_return(isbn)
         expect { verifier.isbn_10(string) }.to output("You have an invalid ISBN code\n").to_stdout
+      end
+    end
+
+    # As a user,
+    # So I can have ISBN codes ending with an 'X' verified correctly
+    # I want the 'X' to equal 10
+
+    context 'when user has an ISBN code which ends in X' do
+      it 'processes the X as a 10' do
+        string = '3-598-21507-X'
+        isbn = '359821507X'
+        deleted_X = '359821507'
+        allow(formatter).to receive(:isbn).and_return(isbn)
+        allow(formatter).to receive(:delete_x).and_return(deleted_X)
+        expect { verifier.isbn_10(string) }.to output("You have a valid ISBN code\n").to_stdout
       end
     end
   end
