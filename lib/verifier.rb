@@ -19,7 +19,7 @@ class Verifier
     @converter.delete_hyphens(string)
     raise_not_10_digits_error unless input_is_10_digits_long(@converter.isbn)
     isbn_10_algorithm
-    add_ten if last_digit_x?(@converter.isbn)
+    @converter.delete_x && add_ten if last_digit_x?(@converter.isbn)
     status_confirmation(sum)
   end
 
@@ -58,7 +58,6 @@ class Verifier
   private
 
   def add_ten
-    @converter.delete_x
     @sum.push(Converter::X)
   end
 
