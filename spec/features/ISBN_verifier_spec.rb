@@ -73,10 +73,21 @@ RSpec.describe 'ISBN_10_Verifier' do
     # So I can have ISBN codes ending with an 'X' verified correctly
     # I want the 'X' to equal 10
 
-    context 'when user has an ISBN code which ends in X' do
+    context 'when user has a valid ISBN code which ends in X' do
       it 'processes the X as a 10' do
         string = '3-598-21507-X'
         expect { verifier.isbn_10(string) }.to output("You have a valid ISBN code\n").to_stdout
+      end
+    end
+
+    # As a user,
+    # So I can have invalid ISBN codes ending with an 'X' evaluated
+    # I want to be notified that I have an invalid ISBN code
+
+    context 'when user has an invalid ISBN code which ends in X' do
+      it 'notifies the user they have an invalid ISBN code' do
+        string = '3-598-21506-X'
+        expect { verifier.isbn_10(string) }.to output("You have an invalid ISBN code\n").to_stdout
       end
     end
   end

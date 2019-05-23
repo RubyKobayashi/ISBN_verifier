@@ -15,6 +15,8 @@ In terminal run command:
  'rspec'
 
 
+
+
 **User Stories:**
 
 * Users are notified with an error if their input is not a string
@@ -56,15 +58,6 @@ So I can have ISBN code without hyphens verified correctly
 I want the program to be able to read codes without hyphens
 ```
 
-* Users can input codes ending with an 'X' and still have their code evaluated
-
-```
-As a user,
-So I can have ISBN codes ending with an 'X' verified correctly
-I want the 'X' to equal 10
-```
-
-
 * Users can input ISBN codes for validation with hyphens
 
 ```
@@ -73,20 +66,17 @@ So I can have ISBN code with hyphens verified correctly
 I want the program to be able to read codes with hyphens
 ```
 
+* Users can input codes ending with an 'X' and still have their code evaluated
 
+```
+As a user,
+So I can have ISBN codes ending with an 'X' verified correctly
+I want the 'X' to equal 10
+```
 
-
-
-
-* How to run the test suite
-  To install rspec:
-  In teminal run command:
-  rails generate rspec:install
-
-  To run tests:
-  In terminal run command:
-  rspec
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+* Users with an invalid ISBN code ending in 'X' will be notified they have an invalid ISBN code
+```
+As a user,
+So I can have invalid ISBN codes ending with an 'X' evaluated
+I want to be notified that I have an invalid ISBN code
+```
