@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # :nodoc:
-class Formatter
+class Converter
   attr_reader :isbn
 
   X = 10

@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
 require 'verifier'
-require 'formatter'
+require 'converter'
 
 # As a user,
 # So I know my ISBN code is in the right format
 # I want to be notified with an error if my ISBN code is not a string
 
 RSpec.describe 'ISBN_10_Verifier' do
-  subject(:formatter) { Formatter.new }
-  subject(:verifier) { Verifier.new formatter }
+  subject(:converter) { Converter.new }
+  subject(:verifier) { Verifier.new converter }
   describe '#isbn_10' do
     context 'when input is not a string' do
       it 'raises an error' do

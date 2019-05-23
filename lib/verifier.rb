@@ -1,24 +1,24 @@
 # frozen_string_literal: true
 
-require_relative 'formatter'
+require_relative 'converter'
 # :nodoc:
 class Verifier
-  attr_reader :formatter
+  attr_reader :converter
 
-  def initialize(formatter)
-    @formatter = formatter
+  def initialize(converter)
+    @converter = converter
   end
 
   def isbn_10(string)
     sum = []
     check_input_is_string(string)
-    @formatter.delete_hyphens(string)
-    formatted_code = @formatter.isbn
+    @converter.delete_hyphens(string)
+    formatted_code = @converter.isbn
     check_input_is_10_digits_long(formatted_code)
     isbn_10_algorithm(formatted_code, sum)
     if last_digit_x(formatted_code)
-      @formatter.delete_x
-      sum.push(Formatter::X)
+      @converter.delete_x
+      sum.push(Converter::X)
     end
     status_confirmation(sum)
   end
@@ -34,7 +34,7 @@ class Verifier
   end
 
   def isbn_10_algorithm(_formatted_code, sum)
-    array = @formatter.isbn.split('')
+    array = @converter.isbn.split('')
     array.each_with_index do |element, index|
       multiple = array.length - index
       sum.push(element.to_i * multiple)
