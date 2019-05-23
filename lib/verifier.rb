@@ -14,13 +14,9 @@ class Verifier
   def isbn_10(string)
     check_input_is_string(string)
     @converter.delete_hyphens(string)
-    formatted_code = @converter.isbn
-    check_input_is_10_digits_long(formatted_code)
-    isbn_10_algorithm(formatted_code)
-    if last_digit_x(formatted_code)
-      @converter.delete_x
-      @sum.push(Converter::X)
-    end
+    check_input_is_10_digits_long(@converter.isbn)
+    isbn_10_algorithm(@converter.isbn)
+    add_ten if last_digit_x?(@converter.isbn)
     status_confirmation(sum)
   end
 
@@ -44,8 +40,15 @@ class Verifier
     end
   end
 
-  def last_digit_x(formatted_code)
+  def last_digit_x?(formatted_code)
     formatted_code[9] == 'X'
+  end
+
+  private
+
+  def add_ten
+    @converter.delete_x
+    @sum.push(Converter::X)
   end
 
   def status_confirmation(sum)
