@@ -80,3 +80,11 @@ As a user,
 So I can have invalid ISBN codes ending with an 'X' evaluated
 I want to be notified that I have an invalid ISBN code
 ```
+
+* Bonus Feature
+* Users can convert their valid ISBN-10 codes into ISBN-13 codes
+```
+As a user,
+If I have a valid ISBN-10 code
+I want to be able to convert it into an ISBN-13 code
+```

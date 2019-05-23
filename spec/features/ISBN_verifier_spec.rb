@@ -2,6 +2,7 @@
 
 require 'verifier'
 require 'converter'
+require 'generator'
 
 # As a user,
 # So I know my ISBN code is in the right format
@@ -10,6 +11,7 @@ require 'converter'
 RSpec.describe 'ISBN_10_Verifier' do
   subject(:converter) { Converter.new }
   subject(:verifier) { Verifier.new converter }
+  subject(:generator) { Generator.new verifier, converter }
   describe '#isbn_10' do
     context 'when input is not a string' do
       it 'raises an error' do
@@ -88,6 +90,17 @@ RSpec.describe 'ISBN_10_Verifier' do
       it 'notifies the user they have an invalid ISBN code' do
         string = '3-598-21506-X'
         expect { verifier.isbn_10(string) }.to output("You have an invalid ISBN code\n").to_stdout
+      end
+    end
+
+    # As a user,
+    # If I have a valid ISBN-10 code
+    # I want to be able to convert it into an ISBN-13 code
+
+    context 'when user has a valid ISBN-10 code' do
+      it 'can convert the code into an ISBN-13 code' do
+        valid_isbn = '3598215088'
+        expect { generator.isbn_13(valid_isbn) }.to output("Your ISBN-13 code is 9783598215087\n").to_stdout
       end
     end
   end
