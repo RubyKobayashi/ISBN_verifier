@@ -46,4 +46,14 @@ RSpec.describe Generator do
     allow(verifier).to receive(:valid_isbn?).with(valid_hyphen_code) { true }
     expect { generator.isbn_13(valid_hyphen_code) }.to output("Your ISBN-13 code is 9783598215087\n").to_stdout
   end
+
+  it 'doesnt generates #isbn_13 codes from invalid ISBN-10 codes with hyphens' do
+    valid_hyphen_code = '3-598-21508-8'
+    allow(verifier).to receive(:input_is_string).with(valid_hyphen_code)
+    allow(converter).to receive(:delete_hyphens).with(valid_hyphen_code)
+    allow(converter).to receive(:isbn).and_return(valid_hyphen_code)
+    allow(verifier).to receive(:last_digit_x?).with(valid_hyphen_code)
+    allow(verifier).to receive(:valid_isbn?).with(valid_hyphen_code) { true }
+    expect { generator.isbn_13(valid_hyphen_code) }.to output("Your ISBN-13 code is 9783598215087\n").to_stdout
+  end
 end
