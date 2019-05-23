@@ -94,10 +94,22 @@ RSpec.describe 'ISBN_10_Verifier' do
     end
 
     # As a user,
-    # If I have a valid ISBN-10 code
+    # If I have a valid ISBN-10 code without hyphens
     # I want to be able to convert it into an ISBN-13 code
 
-    context 'when user has a valid ISBN-10 code' do
+    context 'when user has a valid ISBN-10 code without hyphens' do
+      it 'can convert the code into an ISBN-13 code' do
+        valid_isbn = '3598215088'
+        expect { generator.isbn_13(valid_isbn) }.to output("Your ISBN-13 code is 9783598215087\n").to_stdout
+      end
+    end
+
+    # As a user,
+    # If I have a valid ISBN-10 code with hyphens
+    # I want to be able to convert it into an ISBN-13 code
+    #
+
+    context 'when user has a valid ISBN-10 code with hyphens' do
       it 'can convert the code into an ISBN-13 code' do
         valid_isbn = '3598215088'
         expect { generator.isbn_13(valid_isbn) }.to output("Your ISBN-13 code is 9783598215087\n").to_stdout
