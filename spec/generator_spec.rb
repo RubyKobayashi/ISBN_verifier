@@ -13,10 +13,10 @@ RSpec.describe Generator do
     formatted_code = '3598215088'
     isbn_13 = '9783598215087'
     allow(verifier).to receive(:sum)
-    allow(verifier).to receive(:check_input_is_string).with(formatted_code)
+    allow(verifier).to receive(:input_is_string).with(formatted_code)
     allow(converter).to receive(:delete_hyphens).with(formatted_code)
     allow(converter).to receive(:isbn).and_return(formatted_code)
-    allow(verifier).to receive(:check_input_is_10_digits_long)
+    allow(verifier).to receive(:input_is_10_digits_long)
     allow(verifier).to receive(:isbn_10_algorithm)
     allow(verifier).to receive(:last_digit_x?).with(formatted_code)
     allow(verifier).to receive(:valid_isbn?).with(formatted_code) { :true }

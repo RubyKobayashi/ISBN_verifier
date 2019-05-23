@@ -15,9 +15,9 @@ class Verifier
   end
 
   def isbn_10(string)
-    check_input_is_string(string)
+    raise_not_string_error unless input_is_string(string)
     @converter.delete_hyphens(string)
-    check_input_is_10_digits_long(@converter.isbn)
+    raise_not_10_digits_error unless input_is_10_digits_long(@converter.isbn)
     isbn_10_algorithm
     add_ten if last_digit_x?(@converter.isbn)
     status_confirmation(sum)
@@ -27,12 +27,12 @@ class Verifier
     (@sum.inject(0) { |sum, x| sum + x } % 11).zero?
   end
 
-  def check_input_is_string(string)
-    raise 'Input is not a string, please input a string' unless string.is_a? String
+  def input_is_string(string)
+    string.is_a? String
   end
 
-  def check_input_is_10_digits_long(string)
-    raise 'Input is not 10 digits long, invalid ISBN code' unless string.length == @correct_input_length
+  def input_is_10_digits_long(string)
+    string.length == @correct_input_length
   end
 
   def isbn_10_algorithm
@@ -47,7 +47,16 @@ class Verifier
     formatted_code[9] == 'X'
   end
 
+
   private
+
+  def raise_not_string_error
+    raise 'Input is not a string, please input a string'
+  end
+
+  def raise_not_10_digits_error
+    raise 'Input is not 10 digits long, invalid ISBN code'
+  end
 
   def add_ten
     @converter.delete_x
