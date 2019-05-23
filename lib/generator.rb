@@ -9,9 +9,9 @@ class Generator
   end
 
   def isbn_13(isbn10)
-    @verifier.input_is_string(isbn10)
+    @verifier.raise_not_string_error unless @verifier.input_is_string(isbn10)
     @converter.delete_hyphens(isbn10)
-    @verifier.input_is_10_digits_long(@converter.isbn)
+    @verifier.raise_not_10_digits_error unless @verifier.input_is_10_digits_long(@converter.isbn)
     @verifier.isbn_10_algorithm
     @converter.delete_x && add_10 if @verifier.last_digit_x?(@converter.isbn)
     create_isbn13_code(@converter.isbn) if @verifier.valid_isbn?(@converter.isbn)
@@ -23,6 +23,14 @@ class Generator
   def create_isbn13_code(formatted_code)
     @isbn12 = formatted_code.chop.prepend('978')
     last_digit(@isbn12)
+  end
+
+  def raise_not_string_error
+    raise 'Input is not a string, please input a string'
+  end
+
+  def raise_not_10_digits_error
+    raise 'Input is not 10 digits long, invalid ISBN code'
   end
 
   def add_10

@@ -47,9 +47,6 @@ class Verifier
     formatted_code[9] == 'X'
   end
 
-
-  private
-
   def raise_not_string_error
     raise 'Input is not a string, please input a string'
   end
@@ -57,6 +54,8 @@ class Verifier
   def raise_not_10_digits_error
     raise 'Input is not 10 digits long, invalid ISBN code'
   end
+
+  private
 
   def add_ten
     @converter.delete_x

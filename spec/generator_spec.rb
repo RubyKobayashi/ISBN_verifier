@@ -12,9 +12,11 @@ RSpec.describe Generator do
   it 'generates #isbn_13 codes from valid ISBN-10 codes' do
     formatted_code = '3598215088'
     isbn_13 = '9783598215087'
+    allow(verifier).to receive(:raise_not_string_error)
     allow(verifier).to receive(:sum)
-    allow(verifier).to receive(:input_is_string).with(formatted_code)
+    allow(verifier).to receive(:input_is_string).with('3598215088')
     allow(converter).to receive(:delete_hyphens).with(formatted_code)
+    allow(verifier).to receive(:raise_not_10_digits_error)
     allow(converter).to receive(:isbn).and_return(formatted_code)
     allow(verifier).to receive(:input_is_10_digits_long)
     allow(verifier).to receive(:isbn_10_algorithm)
