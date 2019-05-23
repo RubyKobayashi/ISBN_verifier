@@ -19,7 +19,6 @@ RSpec.describe Generator do
 
   it 'generates #isbn_13 codes from valid ISBN-10 codes' do
     formatted_code = '3598215088'
-    isbn_13 = '9783598215087'
     allow(verifier).to receive(:input_is_string).with(formatted_code)
     allow(converter).to receive(:delete_hyphens).with(formatted_code)
     allow(converter).to receive(:isbn).and_return(formatted_code)
@@ -40,7 +39,6 @@ RSpec.describe Generator do
 
   it 'generates #isbn_13 codes from valid ISBN-10 codes with hyphens' do
     valid_hyphen_code = '3-598-21508-8'
-    isbn_13 = '9783598215087'
     allow(verifier).to receive(:input_is_string).with(valid_hyphen_code)
     allow(converter).to receive(:delete_hyphens).with(valid_hyphen_code)
     allow(converter).to receive(:isbn).and_return(valid_hyphen_code)
