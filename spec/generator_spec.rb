@@ -18,7 +18,7 @@ RSpec.describe Generator do
     allow(converter).to receive(:isbn).and_return(formatted_code)
     allow(verifier).to receive(:check_input_is_10_digits_long)
     allow(verifier).to receive(:isbn_10_algorithm).with(formatted_code)
-    allow(verifier).to receive(:last_digit_x).with(formatted_code)
+    allow(verifier).to receive(:last_digit_x?).with(formatted_code)
     allow(verifier).to receive(:valid_isbn?).with(formatted_code) { :true }
     expect { generator.isbn_13(formatted_code) }.to output("Your ISBN-13 code is 9783598215087\n").to_stdout
   end
