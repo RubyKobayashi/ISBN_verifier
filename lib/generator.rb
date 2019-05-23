@@ -14,23 +14,19 @@ class Generator
     @verifier.raise_not_10_digits_error unless @verifier.input_is_10_digits_long(@converter.isbn)
     @verifier.isbn_10_algorithm
     @converter.delete_x && add_10 if @verifier.last_digit_x?(@converter.isbn)
-    create_isbn13_code(@converter.isbn) if @verifier.valid_isbn?(@converter.isbn)
-    puts "Your ISBN-13 code is #{@isbn12 + @last_digit}"
+    if @verifier.valid_isbn?(@converter.isbn)
+      create_isbn13_code(@converter.isbn)
+      puts "Your ISBN-13 code is #{@isbn12 + @last_digit}"
+    else
+      puts 'An ISBN-13 code cannot be generated due to invalid ISBN-13 code'
+    end
   end
 
   private
 
   def create_isbn13_code(formatted_code)
-    @isbn12 = formatted_code.chop.prepend('978')
+    @isbn12 = formatted_code.chop.prepend('978').tr('-', '')
     last_digit(@isbn12)
-  end
-
-  def raise_not_string_error
-    raise 'Input is not a string, please input a string'
-  end
-
-  def raise_not_10_digits_error
-    raise 'Input is not 10 digits long, invalid ISBN code'
   end
 
   def add_10
