@@ -12,10 +12,10 @@ class Generator
     @verifier.check_input_is_string(isbn10)
     @converter.delete_hyphens(isbn10)
     @verifier.check_input_is_10_digits_long(@converter.isbn)
-    @verifier.isbn_10_algorithm(@converter.isbn)
+    @verifier.isbn_10_algorithm
     @converter.delete_x && add_10 if @verifier.last_digit_x?(@converter.isbn)
     create_isbn13_code(@converter.isbn) if @verifier.valid_isbn?(@converter.isbn)
-      puts "Your ISBN-13 code is #{@isbn12 + @last_digit}"
+    puts "Your ISBN-13 code is #{@isbn12 + @last_digit}"
   end
 
   private

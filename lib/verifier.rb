@@ -15,7 +15,7 @@ class Verifier
     check_input_is_string(string)
     @converter.delete_hyphens(string)
     check_input_is_10_digits_long(@converter.isbn)
-    isbn_10_algorithm(@converter.isbn)
+    isbn_10_algorithm
     add_ten if last_digit_x?(@converter.isbn)
     status_confirmation(sum)
   end
@@ -32,7 +32,7 @@ class Verifier
     raise 'Input is not 10 digits long, invalid ISBN code' unless string.length == 10
   end
 
-  def isbn_10_algorithm(_formatted_code)
+  def isbn_10_algorithm
     array = @converter.isbn.split('')
     array.each_with_index do |element, index|
       multiple = array.length - index
