@@ -164,9 +164,9 @@ RSpec.describe Verifier do
       it 'processes the X as a 10' do
         string = '3-598-21507-X'
         isbn = '359821507X'
-        deleted_X = '359821507'
+        deleted_x = '359821507'
         allow(formatter).to receive(:isbn).and_return(isbn)
-        allow(formatter).to receive(:delete_x).and_return(deleted_X)
+        allow(formatter).to receive(:delete_x).and_return(deleted_x)
         expect { verifier.isbn_10(string) }.to output("You have a valid ISBN code\n").to_stdout
       end
     end
