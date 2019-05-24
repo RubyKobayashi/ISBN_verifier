@@ -102,3 +102,10 @@ As a user,
 If I have an invalid ISBN-10 code with hyphens
 I want to be notified that an ISBN-13 code cannot be generated
 ```
+
+* Users can convert their valid ISBN-10 codes ending with X into ISBN-13 codes
+```
+As a user,
+If I have a valid ISBN-10 code ending in an x
+I want to be able to convert it into an ISBN-13 code
+```

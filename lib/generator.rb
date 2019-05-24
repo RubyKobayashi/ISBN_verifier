@@ -13,7 +13,9 @@ class Generator
     @converter.delete_hyphens(isbn10)
     @verifier.raise_not_10_digits_error unless @verifier.input_is_10_digits_long(@converter.isbn)
     @verifier.isbn_10_algorithm
-    @converter.delete_x && add_10 if @verifier.last_digit_x?(@converter.isbn)
+    if @verifier.last_digit_x?(@converter.isbn)
+      @converter.delete_x && add_10
+    end
     if @verifier.valid_isbn?(@converter.isbn)
       create_isbn13_code(@converter.isbn)
       puts "Your ISBN-13 code is #{@isbn12 + @last_digit}"
@@ -25,7 +27,11 @@ class Generator
   private
 
   def create_isbn13_code(formatted_code)
-    @isbn12 = formatted_code.chop.prepend('978').tr('-', '')
+    @isbn12 = if formatted_code.length == 9
+                formatted_code.prepend('978').tr('-', '')
+              else
+                formatted_code.chop.prepend('978').tr('-', '')
+              end
     last_digit(@isbn12)
   end
 
