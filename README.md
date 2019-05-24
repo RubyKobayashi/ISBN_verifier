@@ -109,3 +109,23 @@ As a user,
 If I have a valid ISBN-10 code ending in an x
 I want to be able to convert it into an ISBN-13 code
 ```
+
+* Users are notified that an ISBN-13 code cannot be generated if they have an invalid ISBN-10 code with hyphens and ending in an X
+```
+As a user,
+If I have an invalid ISBN-10 code with hyphens and ending in an X
+I want to be notified that an ISBN-13 code cannot be generated
+```
+
+**Approach:**
+```
+In my approach to designing my solution for this tech test, I decided to design a back-end heavy command-line program with output to the terminal so that I could focus on the logic. My program consists of 3 classes 'Converter', 'Verifier' and 'Generator'.
+
+The Converter class has light format conversions methods for ISBN-10 codes, namely '#delete_x' and '#delete_hyphens'. An instance of this is then injected into 'Verifier' which verifies to the user, whether their code input is in the correct format and whether they have a valid ISBN-10 or invalid ISBN-10 code. Lastly, the 'Generator, with a 'Converter' dependency injection generates ISBN-13 codes from valid ISBN-10 codes.
+
+I stuck to a strict TDD process and have managed to achieve 100% test coverage with 40 passing tests.
+
+I have implemented the core tasks, as well as all bar one of the bonus features. Given further time, I would have spent more time refactoring, focussing mainly on the Generator class. Lastly, I would have implemented a new 'Verifier' method with all its corresponding tests, which verifies whether you have a valid ISBN-13 code.
+
+
+```
