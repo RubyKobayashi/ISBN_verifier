@@ -1,5 +1,5 @@
 # README
-ISBN verifier tech test for Homeflow
+
 
 * Ruby version '2.6.0'
 
